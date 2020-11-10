@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="@drawable/background4">
+    android:background="@drawable/background7">
         <ImageView
             android:background="@null"
             android:layout_marginTop="100dp"
             android:layout_gravity="center"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/chu3"/>
         <pl.droidsonroids.gif.GifTextView
