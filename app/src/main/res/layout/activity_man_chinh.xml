@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="@drawable/background4">
+        <ImageView
+            android:background="@null"
+            android:layout_marginTop="100dp"
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chu3"/>
+        <pl.droidsonroids.gif.GifTextView
+            android:layout_gravity="center"
+
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:background="@drawable/miniondance"
+            />
+        <TextView
+            android:id="@+id/shine"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="50dp"
+            android:textStyle="bold"
+            android:textColor="@color/xanhngoc"
+            android:text="It's time to shine"/>
+
+</LinearLayout>
