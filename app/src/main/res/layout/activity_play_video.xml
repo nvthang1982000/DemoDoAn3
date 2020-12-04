@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    tools:context=".PlayVideoActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/xanhngoc"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/left_50px"
+            android:background="@null"
+            />
+        <TextView
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/trang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Phát Video"
+            />
+    </LinearLayout>
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/myYouTube"></com.google.android.youtube.player.YouTubePlayerView>
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/tenvideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"/>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:layout_marginLeft="250dp"
+            android:id="@+id/YeuThich"
+            android:text="Yêu thích"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ToggleButton
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:id="@+id/ghiam"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:checked="true"
+            android:textSize="20dp"
+            android:textOff="Ấn để thu âm"
+            android:textOn="Đang thu âm..." />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/play"
+            android:text="Phát"/>
+    </LinearLayout>
+
+</LinearLayout>

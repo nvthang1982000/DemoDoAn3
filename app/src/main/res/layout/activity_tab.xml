@@ -32,6 +32,13 @@
             android:layout_below="@+id/menu"
             app:tabTextColor="@color/trang"
             />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tab"
+            android:id="@+id/timkiem"
+            android:visibility="gone"
+            />
         <androidx.viewpager.widget.ViewPager
             android:layout_width="match_parent"
             android:layout_below="@+id/tab"

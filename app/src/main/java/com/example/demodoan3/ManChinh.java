@@ -34,6 +34,6 @@ public class ManChinh extends AppCompatActivity {
                 finish();
                 hd.removeCallbacks(this);
             }
-        },6000);
+        },5000);
     }
 }
