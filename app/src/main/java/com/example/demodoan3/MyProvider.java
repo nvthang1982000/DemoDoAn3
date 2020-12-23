@@ -21,10 +21,12 @@ public class MyProvider {
         this.mContext = mContext;
         mResolver = mContext.getContentResolver();
     }
-
+    public static boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
     // Load toan bo file nhac
-    public ArrayList<VideoYouTube> getData() {
-        ArrayList<VideoYouTube> arr = new ArrayList<VideoYouTube>();
+    public ArrayList<Song> getData() {
+        ArrayList<Song> arr = new ArrayList<Song>();
         // Thiết lập URI
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         // Thiet lap điều kiện chị lấy file nhạc
@@ -32,33 +34,27 @@ public class MyProvider {
         // Thiet lập các trường sẽ được lấy
         final String[] projection = new String[]{
                 MediaStore.Audio.Media.TITLE,
-                MediaStore.Audio.Media.ARTIST,
                 MediaStore.Audio.Media.DATA,
-                MediaStore.Audio.Media.ALBUM,
                 MediaStore.Audio.Media.DURATION
-
         };
         // Sắp xếp file nhạc theo tên
         final String sortOrder = MediaStore.Audio.AudioColumns.TITLE + " COLLATE LOCALIZED ASC";
         try {
-            Cursor cursor = mResolver.query(uri, projection, selection, null, sortOrder);
+            Cursor cursor = mResolver.query(uri, projection,selection, null, sortOrder);
             cursor.moveToFirst();
+//            Log.d("AZZ",cursor.getCount()+"-----");
             while (!cursor.isAfterLast()) {
-                String tenbaihat = cursor.getString(0);
-                String casi = cursor.getString(1);
-                String link = cursor.getString(2);
-                Log.d("CCC", "getData: "+tenbaihat);
-//                String album = cursor.getString(3);
-//                int duration = cursor.getInt(4);
-//                BaiHat itemSong = new BaiHat(title, artist, data, album, duration);
-                VideoYouTube baiHat=new VideoYouTube(tenbaihat,link,casi);
-                arr.add(baiHat);
+                String title = cursor.getString(0);
+                String data = cursor.getString(1);
+                int duration = cursor.getInt(2);
+                Song itemSong = new Song(title, data, duration);
+                arr.add(itemSong);
                 cursor.moveToNext();
             }
-
             return arr;
         } catch (Exception ex) {
             Toast.makeText(mContext, "Không tìm thấy file nhạc nào ", Toast.LENGTH_SHORT).show();
+            ex.printStackTrace();
         }
         return  null;
     }
