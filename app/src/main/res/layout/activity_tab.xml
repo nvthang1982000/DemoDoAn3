@@ -20,13 +20,13 @@
             android:layout_height="40dp"
             android:src="@drawable/menu"
             android:scaleType="fitXY"
-            android:background="@color/xanhngoc"
+            android:background="@color/Cam"
             />
         <com.google.android.material.tabs.TabLayout
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabBackground="@color/xanhngoc"
+            app:tabBackground="@color/Cam"
             android:id="@+id/tab"
             app:tabSelectedTextColor="#008EFF"
             android:layout_below="@+id/menu"
@@ -103,17 +103,17 @@
             android:src="@drawable/thongtin"
             android:background="@null"
             />
-        <Button
-            android:id="@+id/btnthongtin"
-            android:background="@null"
-            android:layout_marginLeft="50dp"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_below="@+id/btnhuongdan"
-            android:paddingLeft="-5dp"
-            android:text="Thông tin ứng dụng"
-            android:textAllCaps="false"
-            />
+
+            <Button
+                android:id="@+id/btnthongtin"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="50dp"
+                android:background="@null"
+                android:paddingLeft="-5dp"
+                android:text="Thông tin ứng dụng"
+                android:layout_below="@+id/btnhuongdan"
+                android:textAllCaps="false" />
         </RelativeLayout>
     </RelativeLayout>
 

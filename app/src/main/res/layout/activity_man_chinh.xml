@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="@drawable/background7">
+    android:background="@drawable/aa">
         <ImageView
             android:background="@null"
             android:layout_marginTop="100dp"
@@ -17,19 +17,19 @@
         <pl.droidsonroids.gif.GifTextView
             android:layout_gravity="center"
 
-            android:layout_width="220dp"
-            android:layout_height="180dp"
-            android:background="@drawable/miniondance"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/qq"
             />
         <TextView
             android:id="@+id/shine"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="50dp"
             android:textStyle="bold"
-            android:textColor="@color/xanhngoc"
+            android:textColor="@color/vang"
             android:text="It's time to shine"/>
 
 </LinearLayout>

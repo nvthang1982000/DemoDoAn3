@@ -19,15 +19,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Special thanks"
-            android:textColor="@color/xanhngoc"
+            android:text="File ghi âm được lưu ở đâu?"
+            android:textColor="@color/Cam"
             android:textSize="25dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/den"
             android:textSize="15dp"
-            android:text="Giáo viên hướng dẫn - Thầy Nguyễn Minh Tiến "/>
+            android:text="Các file ghi âm được lưu ở thư mục BanThuAm trên Bộ nhớ thiết bị "/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,27 +39,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Giới thiệu"
-            android:textColor="@color/xanhngoc"
+            android:text="Làm sao để tôi chia sẻ file ghi âm?"
+            android:textColor="@color/Cam"
             android:textSize="25dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/den"
             android:textSize="15dp"
-            android:text=" - Show Your Voice là ứng dụng hỗ trợ bạn tìm kiếm video karaoke online trên Youtube một cách dễ dàng, thuật tiện. Bạn có thể thêm video yêu thích để nhanh trong truy cập. "/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/den"
-            android:textSize="15dp"
-            android:text=" - Ứng dụng hỗ trợ bạn hát và thu âm trên máy với chất lượng tốt."/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/den"
-            android:textSize="15dp"
-            android:text=" - Các file thu âm được lưu ở mục KaraokeRecord trên bộ nhớ thiết bị. "/>
+            android:text="Bạn có thể vào bộ nhớ thiết bị, chọn những bản thu âm bạn muốn gửi hoặc chia sẻ trong thư mục BanThuAm. Sau đó ấn gửi, chọn ứng dụng hỗ trợ gửi trên thiết bị của bạn và hoàn tất"/>
+
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,15 +61,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lưu ý"
-            android:textColor="@color/xanhngoc"
+            android:text="Tại sao âm lượng khi thu âm quá nhỏ hoặc quá lớn?"
+            android:textColor="@color/Cam"
             android:textSize="25dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/den"
             android:textSize="15dp"
-            android:text="Khi thu âm với tai nghe, chúng tôi rất tiếc không thể thu âm được nhạc nền. "/>
+            android:text="Phụ thuộc vào từng thiết bị, bạn có thể chỉnh lại âm lượng khi thu âm để cải thiện chất lượng thu. "/>
     </LinearLayout>
 
 

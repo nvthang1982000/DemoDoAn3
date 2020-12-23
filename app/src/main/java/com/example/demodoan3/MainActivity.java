@@ -1,6 +1,7 @@
 package com.example.demodoan3;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -15,6 +16,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
@@ -43,6 +45,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 //                initializeView(v);
             }
         }
+        createFolder();
         init();
         IBmenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -235,5 +239,23 @@ public class MainActivity extends AppCompatActivity {
         }
         );
         requestQueue.add(jsonObjectRequest);
+    }
+    private void createFolder() {
+        File file = new File(Environment.getExternalStorageDirectory(),"BanThuAm");
+        if(file.exists()){
+//            Toast.makeText(getApplicationContext(), "Đã tồn tại" + "\nPath: " + Environment.getExternalStorageDirectory(), Toast.LENGTH_SHORT).show();
+        }
+        else{
+            file.mkdirs();
+            if(file.isDirectory()){
+                Toast.makeText(getApplicationContext(), "Đã tạo", Toast.LENGTH_SHORT).show();
+            }else{
+                AlertDialog.Builder builder = new  AlertDialog.Builder(MainActivity.this);
+                String tb = "Thất bại" +"\nPath: " + Environment.getExternalStorageDirectory() +
+                        "\nmkdirs: " +file.mkdirs();
+                builder.setMessage(tb);
+                builder.show();
+            }
+        }
     }
 }

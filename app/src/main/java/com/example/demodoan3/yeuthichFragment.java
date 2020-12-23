@@ -29,7 +29,6 @@ public class yeuthichFragment extends Fragment {
     ListView lvYeuThich;
     ArrayList<VideoYouTube> arrayYeuThich=new ArrayList<>();
     VideoYouTubeAdapter adapterYeuThich;
-    ArrayAdapter arrayAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,6 +52,7 @@ public class yeuthichFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
 
     return  view;
     }

@@ -3,12 +3,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BTAFragment">
+    tools:context=".BTAFragment"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
 
     <!-- TODO: Update blank fragment layout -->
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/BTA"/>
+        android:layout_height="400dp"
+        android:id="@+id/lvBTA"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:weightSum="10"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:text="00:00"
+                android:gravity="center"
+                android:layout_weight="0.5"
+                android:id="@+id/tvCurrentTime"
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <SeekBar
+                android:id="@+id/sbPlay"
+                android:layout_weight="9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="00:00"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:gravity="center"
+                android:layout_weight="0.5"
+                android:id="@+id/tvTotalTime"
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:layout_height="45dp"
+            android:id="@+id/tvCurrentSong"
+            />
+        <LinearLayout
+            android:background="@color/Cam1"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:src="@drawable/ic_repeat"
+                android:scaleType="fitXY"
+                android:background="@null"
+                android:id="@+id/imStop"
+                android:layout_marginRight="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:src="@drawable/ic_skip_previous"
+                android:scaleType="fitXY"
+                android:background="@null"
+                android:id="@+id/imPrev"
+                android:layout_marginRight="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:src="@drawable/ic_play"
+                android:scaleType="fitXY"
+                android:background="@null"
+                android:id="@+id/imPlay"
+                android:layout_marginRight="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:src="@drawable/ic_skip_next"
+                android:scaleType="fitXY"
+                android:background="@null"
+                android:id="@+id/imNext"
+                android:layout_marginRight="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:src="@drawable/ic_replay"
+                android:scaleType="fitXY"
+                android:background="@null"
+                android:id="@+id/imloop"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>

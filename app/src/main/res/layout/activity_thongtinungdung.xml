@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Special thanks"
-            android:textColor="@color/xanhngoc"
+            android:textColor="@color/Cam"
             android:textSize="25dp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Giới thiệu"
-            android:textColor="@color/xanhngoc"
+            android:textColor="@color/Cam"
             android:textSize="25dp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lưu ý"
-            android:textColor="@color/xanhngoc"
+            android:textColor="@color/Cam"
             android:textSize="25dp"/>
         <TextView
             android:layout_width="wrap_content"

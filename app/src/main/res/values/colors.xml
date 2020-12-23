@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="den">#000000</color>
-    <color name="Cam">#FFA500</color>
+    <color name="Cam">#FFBD45</color>
     <color name="Do">#ff3333</color>
     <color name="tim">#DA70D6</color>
     <color name="hong">#FF1493</color>
@@ -13,4 +13,5 @@
     <color name="trang">#ffffff</color>
     <color name="huong">#94FFEA</color>
     <color name="xanhngoc">#00CCFF</color>
+    <color name="Cam1">#FFE2AF</color>
 </resources>
