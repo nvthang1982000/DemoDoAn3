@@ -1,14 +1,9 @@
 package com.example.demodoan3;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatCallback;
-import androidx.appcompat.app.AppCompatDelegate;
+
 import androidx.appcompat.widget.SwitchCompat;
-import androidx.appcompat.widget.Toolbar;
-import androidx.room.Database;
+
 
 import android.Manifest;
 import android.content.ContentValues;
@@ -24,10 +19,9 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
+
 import android.view.View;
-import android.widget.Button;
+
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -46,12 +40,11 @@ import java.util.ArrayList;
 
 public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
     final String DATABASE_NAME = "videoYouTube.db";
-    SQLiteDatabase SQLDB;
     private MediaRecorder myRecorder;
     private String outputFile;
-    private String fileName = "nhacvideo";
-    private MediaPlayer myPlayer;
+    private String fileName;
 
+ArrayList<VideoYouTube> arr1;
     yeuthichFragment yt = new yeuthichFragment();
     String id = "";
     String title = "";
@@ -60,10 +53,11 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
     ImageView back;
     TextView tenvideo;
     int REQUEST_VIDEO = 12;
-    Button Phat;
+    ImageButton Phat;
     ToggleButton ghiam;
     SwitchCompat YeuThich;
-    ArrayList<VideoYouTube> arrayYeuThich = new ArrayList<VideoYouTube>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +78,8 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
         url = intent.getStringExtra("idVideoYouTubeUrl");
         tenvideo.setText(title+"");
         youTubePlayerView.initialize(videosFragment.API_KEY, this);
-        ArrayList<VideoYouTube>arr=new ArrayList<>();
+        ArrayList<VideoYouTube>arr;
+        arr1=new ArrayList<>();
         arr=readData();
         for(int i = 0; i < arr.size();i++){
             if(arr.get(i).getIdVideo().equals(id)){
@@ -92,21 +87,38 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
                 break;
             }
         }
+        arr1=readData1();
+
+        final ContentValues contentValues = new ContentValues();
+        contentValues.put("IdVideo",id);
+        contentValues.put("Title",title);
+        contentValues.put("Thumbnail",url );
+        final SQLiteDatabase database = DataBase.initDatabase(PlayVideoActivity.this, DATABASE_NAME);
+        if (arr1.size()==0){
+            database.insert("LichSu",null,contentValues);
+        }
+        else{
+            boolean check = true;
+            for(int i = 0; i < arr1.size();i++){
+                if (arr1.get(i).getIdVideo().equals(id) == true){
+                    arr1.remove(i);
+                    database.delete("LichSu","IdVideo = ?",  new String[]{id});
+                    database.insert("LichSu",null,contentValues);
+                    check = false;
+                    break;
+                }
+            }
+            if (check == true){
+                database.insert("LichSu",null,contentValues);
+            }
+        }
+
         YeuThich.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(YeuThich.isChecked() == true){
-
                     Toast.makeText(PlayVideoActivity.this,"Đã thêm yêu thích",Toast.LENGTH_SHORT).show();
-                    ContentValues contentValues = new ContentValues();
-                    contentValues.put("IdVideo",id);
-                    contentValues.put("Title",title);
-                    contentValues.put("Thumbnail",url );
-
-                    SQLiteDatabase database = DataBase.initDatabase(PlayVideoActivity.this, DATABASE_NAME);
-
                     database.insert("Video",null,contentValues);
-
                 }
                 else{
                     Toast.makeText(PlayVideoActivity.this,"Đã bỏ yêu thích",Toast.LENGTH_SHORT).show();
@@ -128,7 +140,8 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
 //                initializeView(v);
             }
         }
-        outputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/"+fileName+".mp3";
+        fileName =title;
+        outputFile = Environment.getExternalStorageDirectory().getPath() + "/BanThuAm"+"/"+fileName+".mp3";
         myRecorder = new MediaRecorder();
         myRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         myRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
@@ -138,7 +151,7 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
 
     }
     private ArrayList<VideoYouTube> readData() {
-       SQLiteDatabase database = DataBase.initDatabase(PlayVideoActivity.this, DATABASE_NAME);
+        SQLiteDatabase database = DataBase.initDatabase(PlayVideoActivity.this, DATABASE_NAME);
         Cursor cursor = database.rawQuery("select * from Video",null);
         ArrayList<VideoYouTube>arr=new ArrayList<>();
         for (int i = 0; i < cursor.getCount(); i ++){
@@ -155,7 +168,7 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
         back = findViewById(R.id.back);
         tenvideo = findViewById(R.id.tenvideo);
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.myYouTube);
-        Phat = (Button) findViewById(R.id.play);
+        Phat = (ImageButton) findViewById(R.id.play);
         YeuThich = (SwitchCompat) findViewById(R.id.YeuThich);
         ghiam = findViewById(R.id.ghiam);
     }
@@ -232,6 +245,7 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
                     try {
                         myRecorder.stop();
                         myRecorder.release();
+                        myRecorder.reset();
                         myRecorder = null;
                     } catch (IllegalStateException e) {
                         e.printStackTrace();
@@ -258,6 +272,20 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
             }
             // Add additional cases for other permissions you may have asked for
         }
+    }
+    private ArrayList<VideoYouTube> readData1() {
+        ArrayList<VideoYouTube> arr1 = new ArrayList<>();
+        SQLiteDatabase database = DataBase.initDatabase(PlayVideoActivity.this, DATABASE_NAME);
+        Cursor cursor = database.rawQuery("select * from LichSu",null);
+        arr1.clear();
+        for (int i = cursor.getCount() -1 ; i >=0; i --){
+            cursor.moveToPosition(i);
+            String IdVideo = cursor.getString(0);
+            String Title = cursor.getString(1);
+            String Thumbnail = cursor.getString(2);
+            arr1.add(new VideoYouTube(Title, Thumbnail, IdVideo));
+        }
+        return arr1;
     }
 
 }
